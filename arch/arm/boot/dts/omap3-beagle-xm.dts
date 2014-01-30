@@ -16,6 +16,26 @@
 	cpus {
 		cpu@0 {
 			cpu0-supply = <&vcc>;
+			operating-points = <
+				/* kHz    uV */
+				300000  1012500
+				600000  1200000
+				800000  1325000
+				1000000  1380000
+			>;
+		};
+	};
+
+	ocp {
+		abb_mpu_iva: regulator-abb-mpu {
+			clocks = <&dpll1_ck>;
+			ti,abb_info = <
+				/* uV           ABB     efuse   rbb_m   fbb_m   vset_m */
+				1012500         0       0       0       0       0 /* Bypass */
+				1200000         3       0       0       0       0 /* RBB mandatory */
+				1320000         1       0       0       0       0 /* FBB mandatory */
+				1380000         1       0       0       0       0
+				>;
 		};
 	};
 
