@@ -78,6 +78,11 @@
 	status = "okay";
 };
 
+&hdmi {
+	ddc = <&i2c1>;
+	status = "okay";
+};
+
 &i2c1 {
 	clock-frequency = <100000>;
 	pinctrl-names = "default";
