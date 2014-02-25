@@ -82,7 +82,7 @@
 	imx_drm: imx-drm {
 		compatible = "fsl,imx-drm";
 		crtcs = <&ipu1 0>, <&ipu1 1>;
-		connectors = <&ldb>;
+		connectors = <&ldb>, <&hdmi>;
 	};
 
 	sound {
@@ -141,6 +141,14 @@
 	phy-mode = "rgmii";
 	phy-reset-gpios = <&gpio1 25 0>;
 	status = "okay";
+};
+
+&hdmi {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_sabresd_hdmi>;
+	ddc = <&i2c2>;
+	status = "okay";
+	crtcs = <&ipu1 1>;
 };
 
 &i2c1 {
@@ -382,6 +390,13 @@
 		pinctrl_pwm1: pwm1grp {
 			fsl,pins = <
 				MX6QDL_PAD_SD1_DAT3__PWM1_OUT		0x1b0b1
+			>;
+		};
+
+
+		pinctrl_sabresd_hdmi: sabresd-hdmi {
+			fsl,pins = <
+				MX6QDL_PAD_KEY_ROW2__HDMI_TX_CEC_LINE 0x1f8b0
 			>;
 		};
 
