@@ -34,6 +34,12 @@
 		};
 	};
 
+	imx_drm: imx-drm {
+		compatible = "fsl,imx-drm";
+		crtcs = <&ipu1 0>, <&ipu1 1>;
+		connectors = <&hdmi>;
+	};
+
 	sound {
 		compatible = "fsl,imx6-wandboard-sgtl5000",
 			     "fsl,imx-audio-sgtl5000";
@@ -81,6 +87,7 @@
 &hdmi {
 	ddc = <&i2c1>;
 	status = "okay";
+	crtcs = <&ipu1 1>;
 };
 
 &i2c1 {
